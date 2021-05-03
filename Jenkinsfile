@@ -9,9 +9,9 @@ pipeline {
             steps {
                 println('install dependencies')
                 sh '''
-                 python3 -m venv venv
-                 . venv/bin/activate
-                 make install
+                 sudo python3 -m venv venv
+                 sudo  . venv/bin/activate
+                 sudo make install
                  # Install hadolint
                  sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64
                  sudo  chmod +x /bin/hadolint
@@ -23,9 +23,9 @@ pipeline {
             steps {
                 println('run lint')
                 sh '''
-                 . venv/bin/activate
-                 make lint           
-                 ./hadolint Dockerfile
+                sudo  . venv/bin/activate
+                sudo  make lint           
+                sudo  ./hadolint Dockerfile
 
                 '''
             }
