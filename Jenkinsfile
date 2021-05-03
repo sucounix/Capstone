@@ -22,7 +22,7 @@ pipeline {
             steps {
                 println('run lint')
                 sh '''
-                 sudo Make lint
+                 sudo make lint
                 '''
             }
         }

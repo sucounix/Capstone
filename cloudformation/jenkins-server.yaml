@@ -127,6 +127,9 @@ Resources:
           sudo mv ./kubectl /usr/local/bin/kubectl
           sudo sermod -aG docker jenkins
           sudo systemctl restart jenkins
+          sudo apt-get install python3-venv
+          sudo apt install make
+          sudo apt install python3-pip
   JenkinsScalingGroup:
     Type: AWS::AutoScaling::AutoScalingGroup
     Properties:
