@@ -7,27 +7,21 @@ pipeline {
     stages {
         stage('Build App') {
             steps {
-                println('install dependencies')
+                println('Env Setup')
                 sh '''
-                 ls
-                 sudo python3 -m venv venv
-                 sudo  . venv/bin/activate
-                 sudo make install
-                 # Install hadolint
-                 sudo wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64
-                 sudo  chmod +x /bin/hadolint
-
+                 sudo Make setup
                 '''
+                println('Install dependencies')
+                sh '''
+                 sudo Make install setup
+                '''                
             }
         }
         stage('Test') {
             steps {
                 println('run lint')
                 sh '''
-                sudo  . venv/bin/activate
-                sudo  make lint           
-                sudo  ./hadolint Dockerfile
-
+                 sudo Make lint
                 '''
             }
         }
