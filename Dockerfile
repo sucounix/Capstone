@@ -1,12 +1,15 @@
-FROM python:3.7.2-slim
+FROM python:3.8.5-slim
 
 COPY . /app
 WORKDIR /app
 
-RUN pip install --upgrade pip &&\
+RUN pip install pip==21.1.1 &&\
 	 pip install -r requirements.txt
+     
 
 
 EXPOSE 8080
 
-ENTRYPOINT ["python", "app.py"]
+ENTRYPOINT ["python", "scr/app.py"]
+
+21.1.1
