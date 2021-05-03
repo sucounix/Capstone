@@ -9,6 +9,7 @@ pipeline {
             steps {
                 println('Env Setup')
                 sh '''
+                 ls
                  sudo make setup
                 '''
                 println('Install dependencies')
