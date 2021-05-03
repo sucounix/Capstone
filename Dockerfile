@@ -11,5 +11,3 @@ RUN pip install -r requirements.txt
 EXPOSE 8080
 
 ENTRYPOINT ["python", "scr/app.py"]
-
-21.1.1
