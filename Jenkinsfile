@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                println('run lint')
+                println('run linting')
                 sh '''
                  sudo make lint
                 '''
