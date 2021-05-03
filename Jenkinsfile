@@ -10,7 +10,7 @@ pipeline {
                 println('Env Setup')
                 sh '''
                  ls
-                 make setup
+                 sudo make setup
                 '''
                 println('Install dependencies')
                 sh '''
