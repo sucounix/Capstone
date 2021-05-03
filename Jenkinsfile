@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        registry = 'anyulled/capstone'
+        registry = 'sucounix/capstone'
         registryCredential = 'dockerhub'
     }
     stages {
@@ -9,6 +9,7 @@ pipeline {
             steps {
                 println('install dependencies')
                 sh '''
+                 ls
                  sudo python3 -m venv venv
                  sudo  . venv/bin/activate
                  sudo make install
