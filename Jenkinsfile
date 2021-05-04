@@ -30,8 +30,7 @@ pipeline {
             steps {
                 println('publish docker image')
                 script {
-                      docker.build('Hello-Flask')
-                    // dockerImage = docker.build registry + ":latest"
+                    dockerImage = docker.build registry + ":latest"
                 }
             }
         }
