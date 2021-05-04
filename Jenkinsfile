@@ -37,8 +37,8 @@ pipeline {
         stage('Push Image') {
             steps {
                 script {
-                 docker.withRegistry('public.ecr.aws/v2o3x6u2/udamicroservice', 'ecr:us-east-1:Work-Key-mac') {
-                  docker.image('demo').push('latest')
+                 docker.withRegistry('public.ecr.aws/v2o3x6u2/udamicroservice', 'Work-Key-mac') {
+                  docker.image('capstone').push('latest')
                     }
                 }
             }
