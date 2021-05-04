@@ -96,7 +96,7 @@ Resources:
     Properties:
       KeyName: capstone
       ImageId: !Ref AmiId
-      InstanceType: "t2.micro"
+      InstanceType: "t2.small"
       SecurityGroups:
         - Ref: JenkinsServerSecurityGroup
       UserData:
@@ -127,13 +127,13 @@ Resources:
           sudo mv ./kubectl /usr/local/bin/kubectl
           sudo sermod -aG docker jenkins
           sudo systemctl restart jenkins
-          sudo apt-get install python3-venv
-          sudo apt install make
-          sudo apt install python3-pip
+          sudo apt-get install python3-venv -y
+          sudo apt install make -y
+          sudo apt install python3-pip -y
   JenkinsScalingGroup:
     Type: AWS::AutoScaling::AutoScalingGroup
     Properties:
-      MinSize: 1
+      MinSize: 0
       MaxSize: 1
       VPCZoneIdentifier:
         - !Ref PublicSubnet

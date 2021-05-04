@@ -26,28 +26,23 @@ pipeline {
                 '''
             }
         }
-        // stage('Check style') {
-        //     steps {
-        //         sh 'mvn checkstyle:checkstyle'
-        //     }
-        // }
-        // stage('Build Image') {
-        //     steps {
-        //         println('publish docker image')
-        //         script {
-        //             dockerImage = docker.build registry + ":latest"
-        //         }
-        //     }
-        // }
-        // stage('Push Image') {
-        //     steps {
-        //         script {
-        //             docker.withRegistry( '', registryCredential ) {
-        //                 dockerImage.push()
-        //             }
-        //         }
-        //     }
-        // }
+        stage('Build Image') {
+            steps {
+                println('publish docker image')
+                script {
+                    dockerImage = docker.build registry + ":latest"
+                }
+            }
+        }
+        stage('Push Image') {
+            steps {
+                script {
+                 docker.withRegistry('public.ecr.aws/v2o3x6u2/udamicroservice', 'ecr:us-east-1:Work-Key-mac') {
+                  docker.image('demo').push('latest')
+                    }
+                }
+            }
+        }
         // stage('Deploy - Kubernetes containers') {
         //     steps {
         //         println('deploy to blue container & service')
