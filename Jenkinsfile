@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         registry = 'sucounix/capstone'
-        registryCredential = 'dockerhub'
+        registryCredential = 'Work-Key-mac'
     }
     stages {
         stage('Build App') {
@@ -37,8 +37,8 @@ pipeline {
         stage('Push Image') {
             steps {
                 script {
-                 docker.withRegistry('public.ecr.aws/v2o3x6u2/udamicroservice', 'Work-Key-mac') {
-                  docker.image('capstone').push('latest')
+                 docker.withRegistry('https://1234567890.dkr.ecr.us-east-1.amazonaws.com', 'registryCredential') {
+                     dockerImage.push()
                     }
                 }
             }
