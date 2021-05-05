@@ -5,7 +5,7 @@
 
 # Step 1:
 # Create dockerpath
-dockerpath=public.ecr.aws/v2o3x6u2/udamicroservice
+dockerpath=public.ecr.aws/v2o3x6u2/capstone
 
 # Step 2: 
 # Authenticate & tag
