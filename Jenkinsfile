@@ -30,6 +30,7 @@ pipeline {
             steps {
                 sh '''
                 ls
+                 sudo chmod +x upload_docker.sh
                  sudo ./upload_docker.sh
                 '''
 
