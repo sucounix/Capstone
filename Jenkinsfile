@@ -29,7 +29,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 sh '''
-                 sudo upload_docker.sh
+                 sudo ./upload_docker.sh
                 '''
 
                 // println('publish docker image')
