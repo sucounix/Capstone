@@ -27,3 +27,12 @@ node {
 
 
 aws ecr get-login-password --region <region> --profile=default | docker login --username AWS --password-stdin <AWS user ID>.dkr.ecr.<region>.amazonaws.com
+
+
+
+
+                println('Pushing Image')
+                sh '''
+                chmod +x upload_docker.sh
+                ./upload_docker.sh
+                '''
