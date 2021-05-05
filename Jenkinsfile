@@ -28,10 +28,14 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                println('publish docker image')
-                script {
-                    dockerImage = docker.build registry + ":latest"
-                }
+                sh '''
+                 sudo upload_docker.sh
+                '''
+
+                // println('publish docker image')
+                // script {
+                //     dockerImage = docker.build registry + ":latest"
+                // }
             }
         }
         stage('Push Image') {
