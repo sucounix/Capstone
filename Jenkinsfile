@@ -47,7 +47,7 @@ pipeline {
                 //      dockerImage.push()
                     }
                 }
-            }
+            
         }
         // stage('Deploy - Kubernetes containers') {
         //     steps {
