@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: blue
-          image: public.ecr.aws/v2o3x6u2/capstone
+          image: public.ecr.aws/v2o3x6u2/capstone:latest
           env:
             - name: CAPSTONE_ENVIRONMENT
               value: "Blue Deployment"
