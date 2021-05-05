@@ -29,6 +29,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 sh '''
+                ls
                  sudo ./upload_docker.sh
                 '''
 
