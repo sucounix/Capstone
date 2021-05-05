@@ -40,26 +40,26 @@ pipeline {
                 sh '''
                 chmod +x upload_docker.sh
                 ./upload_docker.sh
-                '''
+                '''            
+                }
+        }
 
-                // script {
-                //  docker.withRegistry('https://1234567890.dkr.ecr.us-east-1.amazonaws.com', 'registryCredential') {
-                //      dockerImage.push()
-                //     }
-                // }
+
+
+        stage('Deploy - Kubernetes containers') {
+            steps {
+                println('deploy to blue container & service')
+                withAWS(region:'us-west-2', credentials:'aws-credentials') {
+                    sh 'aws eks update-kubeconfig --name capstonecluster --region us-west-2'
+                    sh 'kubectl apply -f ./k8s/blue-replication-controller.yaml'
+                    sh 'kubectl apply -f ./k8s/green-replication-controller.yaml'
+                    sh 'kubectl apply -f ./k8s/blue-service.yaml'
+                }
             }
         }
-        // stage('Deploy - Kubernetes containers') {
-        //     steps {
-        //         println('deploy to blue container & service')
-        //         withAWS(region:'eu-west-2', credentials:'aws-credentials') {
-        //             sh 'aws eks update-kubeconfig --name capstonecluster --region eu-west-2'
-        //             sh 'kubectl apply -f ./k8s/blue-replication-controller.yaml'
-        //             sh 'kubectl apply -f ./k8s/green-replication-controller.yaml'
-        //             sh 'kubectl apply -f ./k8s/blue-service.yaml'
-        //         }
-        //     }
-        // }
+
+
+
         // stage('Blue/Green Deployment') {
         //     steps {
         //         input 'Deploy to Green Service?'
