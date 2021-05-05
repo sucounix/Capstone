@@ -28,23 +28,23 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                sh '''
-                ls
-                 sudo chmod +x upload_docker.sh
-                 sudo ./upload_docker.sh
-                '''
-
-                // println('publish docker image')
-                // script {
-                //     dockerImage = docker.build registry + ":latest"
-                // }
+                println('publish docker image')
+                script {
+                    dockerImage = docker.build registry + ":latest"
+                }
             }
         }
         stage('Push Image') {
             steps {
-                script {
-                 docker.withRegistry('https://1234567890.dkr.ecr.us-east-1.amazonaws.com', 'registryCredential') {
-                     dockerImage.push()
+                println('Pushing Image')
+                sh '''
+                chmod +x upload_docker.sh
+                ./upload_docker.sh
+                '''
+
+                // script {
+                //  docker.withRegistry('https://1234567890.dkr.ecr.us-east-1.amazonaws.com', 'registryCredential') {
+                //      dockerImage.push()
                     }
                 }
             }
