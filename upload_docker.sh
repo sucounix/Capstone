@@ -11,9 +11,8 @@ dockerpath=public.ecr.aws/v2o3x6u2/udamicroservice
 # Authenticate & tag
 echo "Docker ID and Image: $dockerpath"
 aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/v2o3x6u2
-docker build -t flaskskearlndemo .
-docker tag capstone:latest public.ecr.aws/v2o3x6u2/udamicroservice:latest
-ii
+#docker build -t flaskskearlndemo .
+docker tag capstone:latest public.ecr.aws/v2o3x6u2/capstone:latest
 # Step 3:
 # Push image to a docker repository
-docker push public.ecr.aws/v2o3x6u2/udamicroservice:latest
+docker push public.ecr.aws/v2o3x6u2/capstone:latest
