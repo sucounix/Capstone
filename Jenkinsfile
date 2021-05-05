@@ -36,18 +36,12 @@ pipeline {
         }
         stage('Push Image') {
             steps {
-                println('Pushing Image')
-                sh '''
-                chmod +x upload_docker.sh
-                ./upload_docker.sh
-                '''
-
-                // script {
-                //  docker.withRegistry('https://1234567890.dkr.ecr.us-east-1.amazonaws.com', 'registryCredential') {
-                //      dockerImage.push()
+                script {
+                 docker.withRegistry('https://1234567890.dkr.ecr.us-east-1.amazonaws.com', 'registryCredential') {
+                     dockerImage.push()
                     }
                 }
-            
+            }
         }
         // stage('Deploy - Kubernetes containers') {
         //     steps {
