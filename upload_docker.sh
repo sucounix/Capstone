@@ -15,4 +15,4 @@ docker build -t capstone .
 docker tag capstone:latest public.ecr.aws/v2o3x6u2/capstone:latest
 # Step 3:
 # Push image to a docker repository
-docker push public.ecr.aws/v2o3x6u2/capstone:v.1
+docker push public.ecr.aws/v2o3x6u2/capstone:v1
