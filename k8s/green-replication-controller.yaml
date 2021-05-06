@@ -5,7 +5,7 @@ metadata:
   labels:
     app: green
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     app: green
   template:
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: green
-          image: public.ecr.aws/v2o3x6u2/capstone:latest
+          image: public.ecr.aws/v2o3x6u2/capstone:v1
           env:
             - name: CAPSTONE_ENVIRONMENT
               value: "Green Deployment"
