@@ -48,6 +48,17 @@ Resources:
       Tags:
         - Key: Name
           Value: !Sub ${EnvironmentName} Public Subnet
+  NatGateway1EIP:
+      Type: AWS::EC2::EIP
+      DependsOn: InternetGateway
+      Properties: 
+          Domain: vpc
+  NatGateway1: 
+      Type: AWS::EC2::NatGateway
+      Properties: 
+          AllocationId: !GetAtt NatGateway1EIP.AllocationId
+          SubnetId: !Ref PublicSubnet
+          
   RouteTable:
     Description: public route table attached to the VPC
     Type: AWS::EC2::RouteTable
@@ -70,6 +81,7 @@ Resources:
     Properties:
       RouteTableId: !Ref RouteTable
       SubnetId: !Ref PublicSubnet
+
   JenkinsServerSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
@@ -109,6 +121,13 @@ Resources:
           sudo apt-get update -y
           sudo apt-get install -y jenkins
           sudo systemctl start jenkins
+          sudo wget http://localhost:8080/jnlpJars/jenkins-cli.jar
+          sudo java -jar jenkins-cli.jar -s http://172.0.0.1:8080 install-plugin http://mirrors.jenkins-ci.org/plugins/ec2/latest/ec2.hpi
+          sudo java -jar jenkins-cli.jar -s http://172.0.0.1:8080 install-plugin http://mirrors.jenkins-ci.org/plugins/aws-java-sdk/latest/aws-java-sdk.hpi
+          sudo java -jar jenkins-cli.jar -s http://172.0.0.1:8080 install-plugin http://mirrors.jenkins-ci.org/plugins/blueocean/latest/blueocean.hpi
+          sudo java -jar jenkins-cli.jar -s http://172.0.0.1:8080 install-plugin http://mirrors.jenkins-ci.org/plugins/aws-credentials/latest/aws-credentials.hpi
+          sudo java -jar jenkins-cli.jar -s http://172.0.0.1:8080 install-plugin http://mirrors.jenkins-ci.org/plugins/blueocean-github-pipeline/latest/blueocean-github-pipeline.hpi
+          sudo java -jar jenkins-cli.jar -s http://172.0.0.1:8080 install-plugin http://mirrors.jenkins-ci.org/plugins/pipeline-aws/latest/pipeline-aws.hpi
           sudo apt-get update -y
           sudo apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
           sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
@@ -139,3 +158,11 @@ Resources:
         - !Ref PublicSubnet
       LaunchConfigurationName:
         Ref: LaunchConfiguration
+
+Outputs:
+
+  HostPublicIPAddress:
+    Description: Host public IP
+    Value: !Ref NatGateway1EIP
+    Export:
+      Name: !Sub ${EnvironmentName}-PUBLIC-IP        
