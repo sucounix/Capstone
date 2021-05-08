@@ -135,6 +135,6 @@ You can access the demo using this [link](http://a44fa97e08ec84106b03fb7f6c889c1
 
 ![](screenshots/ASK-Green-Depploy-Screen.png?raw=true)
 
-![](screenshots/Blue-Deploy-Screen-term.png?raw=true)
+![](screenshots/Green-Deploy-Screen-term.png?raw=true)
 
 ![](screenshots/All-Pass-Screen.png?raw=true)
