@@ -51,7 +51,7 @@ pipeline {
                 println('deploy to blue container & service')
                 withAWS(region:'us-west-2', credentials:'Work-Key-mac') {
                     sh 'aws eks update-kubeconfig --name capstonecluster --region us-west-2'
-                    sh 'kubectl apply -f ./k8s/blue-replication-controller.yaml'
+                    sh 'kubectl apply -f ./k8s/blue-replication-controller.yaml --force'
                     sh 'kubectl apply -f ./k8s/green-replication-controller.yaml'
                     sh 'kubectl apply -f ./k8s/blue-service.yaml'
                 }
