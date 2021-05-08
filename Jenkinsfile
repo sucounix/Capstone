@@ -1,7 +1,6 @@
 pipeline {
     agent any
     environment {
-        registry = 'sucounix/capstone'
         registryCredential = 'Work-Key-mac'
     }
     stages {
