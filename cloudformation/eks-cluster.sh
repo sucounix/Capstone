@@ -1,6 +1,3 @@
-#!/usr/bin/env bash
-
-aws cloudformation create-stack --stack-name "capstone-stack" --template-body file://jenkins-server.yaml --region=us-west-2
 eksctl create cluster \
     --name capstonecluster \
     --version 1.19 \
