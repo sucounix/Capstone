@@ -63,7 +63,6 @@ Once you have completed your Continuous Integration you will set up Continuous D
 ### Project Structure
 
     ```md
-    .
 .
 ├── Dockerfile
 ├── Jenkinsfile
@@ -83,7 +82,9 @@ Once you have completed your Continuous Integration you will set up Continuous D
 ├── requirements.txt
 ├── scr
 │   └── app.py
-└── upload_docker.sh    ```
+└── upload_docker.sh  
+
+```
 
 ### Instructions
 
