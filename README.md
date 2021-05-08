@@ -62,7 +62,7 @@ Once you have completed your Continuous Integration you will set up Continuous D
 
 ### Project Structure
 
-    ```md
+```md
 .
 ├── Dockerfile
 ├── Jenkinsfile
