@@ -113,25 +113,27 @@ You can access the demo using this [link](http://a44fa97e08ec84106b03fb7f6c889c1
 
 ##### Cloud formation scripts status
 
-![](screenshots/?raw=true)
+![](screenshots/Stacks.png?raw=true)
 
 ##### Failed linting
 
-![](screenshots/?raw=true)
+![](screenshots/Fail-test-Screen.png?raw=true)
 
 
 ##### Successfull linting and Scanning
 
-![](screenshots/?raw=true)
+![](screenshots/Pass-Test.png?raw=true)
 
 ##### Blue deployment
 
-![](screenshots/?raw=true)
+![](screenshots/Blue-Deply-Screen.png?raw=true)
 
-![](screenshots/?raw=true)
+![](screenshots/Blue-Deploy-Screen-term.png?raw=true)
 
 ##### Green deployment
 
-![](screenshots/?raw=true)
+![](screenshots/ASK-Green-Depploy-Screen.png?raw=true)
 
-![](screenshots/?raw=true)
+![](screenshots/Blue-Deploy-Screen-term.png?raw=true)
+
+![](screenshots/All-Pass-Screen.png?raw=true)
